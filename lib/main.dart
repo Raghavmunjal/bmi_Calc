@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'inputPage.dart';
 
 void main() {
   runApp(BiCal());
@@ -13,25 +14,6 @@ class BiCal extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFF0A0E21),
       ),
       home:InputPage(),
-    );
-  }
-}
-
-class InputPage extends StatefulWidget {
-  @override
-  _InputPageState createState() => _InputPageState();
-}
-
-class _InputPageState extends State<InputPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-
-      appBar: AppBar(
-        title: Center(child: Text('BMI Calculator')),
-        shadowColor: Colors.white,
-      ),
-      body: Center(child: Text('Body text')),
     );
   }
 }
