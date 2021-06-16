@@ -14,12 +14,13 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   GenderType selectedGender = GenderType.TransGender;
   int height = 180;
+  int weight = 60;
+  int age = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('BMI Calculator')),
-        shadowColor: Colors.white,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -70,6 +71,9 @@ class _InputPageState extends State<InputPage> {
                     'HEIGHT',
                     style: kLabelTextStyle,
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -92,16 +96,15 @@ class _InputPageState extends State<InputPage> {
                       thumbShape: RoundSliderThumbShape(enabledThumbRadius: 13),
                       activeTrackColor: Colors.white,
                       inactiveTrackColor: Color(0xFF8D8E98),
-                      overlayShape: RoundSliderOverlayShape(overlayRadius: 30)
+                      overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
                     ),
                     child: Slider(
-
                       value: height.toDouble(),
                       max: 220,
                       min: 120,
                       onChanged: (double newValue) {
                         setState(() {
-                          height=newValue.round();
+                          height = newValue.round();
                         });
                       },
                     ),
@@ -114,8 +117,91 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: [
-                //Expanded(child: ReusableCards(colour:inactiveContainerColor,cardChild: IconCard(),)),
-                //Expanded(child: ReusableCards(colour:inactiveContainerColor,cardChild: IconCard(),)),
+                Expanded(
+                  child: ReusableCards(
+                    colour: kInactiveContainerColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.minus, onPressed: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                            }),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.plus, onPressed: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                            }),
+                          ],
+                        )
+                      ],
+                    ),
+                    onPress: () {},
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCards(
+                    colour: kInactiveContainerColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.minus, onPressed: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                               },
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.plus, onPressed: () {
+                              setState(() {
+                                age++;
+                              });
+                            },),
+                          ],
+                        )
+                      ],
+                    ),
+                    onPress: () {},
+                  ),
+                ),
               ],
             ),
           ),
@@ -124,9 +210,29 @@ class _InputPageState extends State<InputPage> {
             color: kBottomContainerColor,
             width: double.infinity,
             margin: EdgeInsets.only(top: 10),
+
           ),
         ],
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({required this.icon, required this.onPressed});
+
+  final VoidCallback onPressed;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: onPressed,
+      child: Icon(icon),
+      elevation: 0.0,
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
     );
   }
 }
