@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'inputPage.dart';
-import 'results_page.dart';
+import 'screens/inputPage.dart';
+import 'screens/results_page.dart';
 
 void main() {
   runApp(BiCal());

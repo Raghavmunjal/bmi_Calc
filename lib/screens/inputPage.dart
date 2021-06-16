@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'reusable_card.dart';
-import 'icon_content.dart';
-import 'constants.dart';
+import '../components/reusable_card.dart';
+import '../components/icon_content.dart';
+import '../constants.dart';
+import '../components/round_icon.dart';
 
 enum GenderType { Male, Female, TransGender }
 
@@ -215,7 +216,8 @@ class _InputPageState extends State<InputPage> {
               color: kBottomContainerColor,
               width: double.infinity,
               margin: EdgeInsets.only(top: 10),
-              child: Center(child: Text('CALCULATE',style: TextStyle(fontSize: 30),)),
+              padding: EdgeInsets.only(bottom: 20),
+              child: Center(child: Text('CALCULATE',style: kBottomButtonStyle,)),
             ),
           ),
         ],
@@ -224,21 +226,4 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({required this.icon, required this.onPressed});
 
-  final VoidCallback onPressed;
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: onPressed,
-      child: Icon(icon),
-      elevation: 0.0,
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
-    );
-  }
-}
