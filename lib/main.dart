@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'inputPage.dart';
+import 'results_page.dart';
 
 void main() {
   runApp(BiCal());
@@ -13,7 +14,11 @@ class BiCal extends StatelessWidget {
         primaryColor: Color(0xFF0A0E21),
         scaffoldBackgroundColor: Color(0xFF0A0E21),
       ),
-      home:InputPage(),
+      initialRoute: '/',
+      routes: {
+        '/':(context)=>InputPage(),
+        '/result':(context)=>ResultPage(),
+      },
     );
   }
 }
